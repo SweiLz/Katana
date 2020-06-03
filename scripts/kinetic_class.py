@@ -1,9 +1,36 @@
 #!/usr/bin/env python
-import rospy
-from visualization_msgs.msg import Marker, MarkerArray
-from geometry_msgs.msg import Quaternion, Pose, Point, Vector3, Twist
-from std_msgs.msg import Header, ColorRGBA
 import math
+
+import rospy
+import tf
+from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3
+from std_msgs.msg import ColorRGBA, Header
+from tf.transformations import quaternion_from_euler
+from visualization_msgs.msg import Marker, MarkerArray
+
+
+class KatanaKinetic(object):
+    _br = tf.TransformBroadcaster()
+    _render_freq = 20.0
+    _update_freq = 30.0
+    _time = 0.0
+
+    def __init__(self):
+        print("Hello KatanaKinetic ")
+
+    def _update(self):
+        print("Katana Update function.")
+
+
+class FluxLight(KatanaKinetic):
+    def __init__(self):
+        print("FluxLight init")
+        super(FluxLight, self).__init__()
+        # self._update()
+
+    def _update(self):
+        print("Flux update")
+        return super(FluxLight, self)._update()
 
 
 class FluxLightNode:
@@ -107,5 +134,7 @@ class BallBounceNode:
 
 if __name__ == "__main__":
     # ball_light_node = BallLightNode()
-    ball_baunce_node = BallBounceNode()
-    rospy.spin()
+    # ball_baunce_node = BallBounceNode()
+    # rospy.spin()
+    node = FluxLight()
+    node._update()

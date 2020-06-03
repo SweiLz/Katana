@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <node pkg="tf" type="static_transform_publisher" name="fixed_base" args="0.0 0.0 2.0 0.0 0.0 0.0 world base_link 20"/>
-    <arg name="command_args" value="-d $(find kita)/config/view.rviz" />
+    <arg name="command_args" value="-d $(find Katana)/config/view.rviz" />
     <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="$(arg command_args)" output="screen">
     </node>
 

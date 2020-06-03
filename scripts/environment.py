@@ -41,10 +41,13 @@ class KineticEnvNode:
                 math.sin(0.2*self.__time * 2 * math.pi) - 0.5
             self.ringPose[2].position.z = 0.5 * \
                 math.sin(0.1*self.__time * 2 * math.pi) - 0.5
-            q = quaternion_from_euler(0.35 * math.sin(0.3*self.__time * 2 * math.pi),
-                                      0.35 * math.cos(0.3*self.__time * 2 * math.pi), 0)
-            self.ringPose[0].orientation = Quaternion(q[0], q[1], q[3], q[2])
-            # self.ringPose[1].orientation = Quaternion(q[1], q[0], q[3], q[2])
+            # self.ringPose[0].position.z = -0.5
+            # self.ringPose[1].position.z = -0.5
+            # self.ringPose[2].position.z = -0.5
+            q = quaternion_from_euler(0.3 * math.sin(0.3*self.__time * 2 * math.pi),
+                                      0.3 * math.cos(0.3*self.__time * 2 * math.pi), 0)
+            self.ringPose[0].orientation = Quaternion(q[0], q[1], q[2], q[3])
+            self.ringPose[1].orientation = Quaternion(q[0], q[1], q[2], q[3])
             self.ringPose[2].orientation = Quaternion(q[0], q[1], q[2], q[3])
 
             self.__time += duration
@@ -69,16 +72,16 @@ class KineticEnvNode:
             marker.id = i
             radius = 0.0
             if i == 0:
-                marker.mesh_resource = "package://kita/meshes/ring_set1_s.stl"
+                marker.mesh_resource = "package://Katana/meshes/ring_set1_s.stl"
                 marker.pose = Pose(Point(-0.5, 0.5, 0), Quaternion(0, 0, 0, 1))
                 radius = 0.5
             elif i == 1:
-                marker.mesh_resource = "package://kita/meshes/ring_set1_m.stl"
+                marker.mesh_resource = "package://Katana/meshes/ring_set1_m.stl"
                 marker.pose = Pose(Point(-0.25, 0.25, 0),
                                    Quaternion(0, 0, 0, 1))
                 radius = 0.75
             elif i == 2:
-                marker.mesh_resource = "package://kita/meshes/ring_set1_l.stl"
+                marker.mesh_resource = "package://Katana/meshes/ring_set1_l.stl"
                 marker.pose = Pose(Point(0, 0, 0), Quaternion(0, 0, 0, 1))
                 radius = 1.0
             marker.scale = Vector3(0.01, 0.01, 0.01)
